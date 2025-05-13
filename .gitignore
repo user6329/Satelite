@@ -1,0 +1,17 @@
+# Arduino
+*.hex
+*.elf
+*.bin
+*.o
+*.d
+*.eep
+*.map
+
+# Node-RED
+node_modules/
+*.log
+
+# General
+.DS_Store
+*.pyc
+__pycache__/

@@ -1,0 +1,86 @@
+Proyecto CanSat con LoRa – Instrucciones Generales
+
+───────────────────────────────────────────────
+1. Componentes necesarios:
+───────────────────────────────────────────────
+- 2 módulos LoRa SX1278 (uno para transmisor y otro para receptor)
+- Arduino Nano (transmisor)
+- Arduino Uno (receptor)
+- Sensor DHT11 (temperatura y humedad)
+- Módulo GPS NEO-6M
+- Módulo RTC DS3231 (reloj de tiempo real)
+- Cables dupont, mini protoboard
+- Computadora con Arduino IDE instalado
+
+───────────────────────────────────────────────
+2. Conexiones – Transmisor (Arduino Nano)
+───────────────────────────────────────────────
+LoRa SX1278 ↔ Arduino Nano:
+  - VCC  → 3.3V
+  - GND  → GND
+  - MISO → D12
+  - MOSI → D11
+  - SCK  → D13
+  - NSS  → D10
+  - RST  → D9
+  - DIO0 → D2
+
+DHT11:
+  - DATA → D4
+  - VCC  → 5V
+  - GND  → GND
+
+GPS NEO-6M:
+  - TX → D6 (RX Arduino)
+  - RX → D5 (TX Arduino)
+
+RTC DS3231:
+  - SDA → A4
+  - SCL → A5
+  - VCC → 5V
+  - GND → GND
+
+───────────────────────────────────────────────
+3. Conexiones – Receptor (Arduino Uno)
+───────────────────────────────────────────────
+LoRa SX1278 ↔ Arduino Uno:
+  - VCC  → 3.3V
+  - GND  → GND
+  - MISO → D12
+  - MOSI → D11
+  - SCK  → D13
+  - NSS  → D10
+  - RST  → D9
+  - DIO0 → D2
+
+───────────────────────────────────────────────
+4. Librerías necesarias (Arduino IDE):
+───────────────────────────────────────────────
+- LoRa (de Sandeep Mistry)
+- DHT sensor library (Adafruit)
+- RTClib (Adafruit)
+- TinyGPSPlus (Mikal Hart)
+- ArduinoJson (Benoit Blanchon)
+
+───────────────────────────────────────────────
+5. Flujo del sistema:
+───────────────────────────────────────────────
+- El Arduino Nano toma datos del DHT11, GPS y RTC.
+- Los agrupa en un mensaje JSON.
+- Lo envía por LoRa a la estación base.
+- El Arduino Uno recibe los datos por LoRa y los imprime en el Monitor Serial.
+
+───────────────────────────────────────────────
+6. Recomendaciones:
+───────────────────────────────────────────────
+- Verifica que el módulo LoRa trabaje a 3.3V. No conectar a 5V directamente.
+- Usa una fuente de alimentación estable para evitar reinicios por bajo voltaje.
+- Asegúrate de seleccionar el puerto y placa correctos en el Arduino IDE.
+- Si el GPS no obtiene coordenadas, colócalo en un lugar abierto y espera unos minutos.
+
+───────────────────────────────────────────────
+7. Expansión futura:
+───────────────────────────────────────────────
+- Guardar datos en tarjeta SD
+- Visualizar en Node-RED vía serial o ESP32
+- Añadir sensores de presión, gas, altitud, etc.
