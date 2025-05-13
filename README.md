@@ -33,6 +33,6 @@ Monitorear temperatura, humedad, altitud y ubicación geográfica en tiempo real
 
 ## 👨‍🚀 Equipo
 
-- Nombre del líder: [Tu Nombre]
-- Institución: [Tu Escuela o Universidad]
+- Nombre del líder: Jael Omar Valerio Sandoval
+- Institución: Instituto Tecnologico Superior de la Sierra Negra de Ajalpan
 - Año: 2025
